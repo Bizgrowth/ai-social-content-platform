@@ -1,5 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { NextRequest, NextResponse } from 'next/server';
+import { createClient } from '@/lib/supabase/server';
 
 type Platform = 'facebook' | 'instagram' | 'linkedin' | 'twitter';
 
@@ -170,7 +171,47 @@ Generate the content now:`;
 
     const content = await Promise.all(contentPromises);
 
-    return NextResponse.json({ content });
+    // Save to database
+    let contentItemId = null;
+    try {
+      const supabase = await createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+
+      if (user) {
+        // Transform content array into JSONB format
+        const generatedContentJson = content.reduce((acc, item) => {
+          acc[item.platform] = {
+            content: item.content,
+            hashtags: item.hashtags,
+            imagePrompt: item.imagePrompt,
+          };
+          return acc;
+        }, {} as Record<string, any>);
+
+        const { data: contentItem, error: insertError } = await supabase
+          .from('content_items')
+          .insert({
+            user_id: user.id,
+            topic,
+            platforms,
+            tone,
+            content_type: contentType,
+            generated_content: generatedContentJson,
+            status: 'draft',
+          })
+          .select('id')
+          .single();
+
+        if (!insertError && contentItem) {
+          contentItemId = contentItem.id;
+        }
+      }
+    } catch (dbError) {
+      console.error('Failed to save to database:', dbError);
+      // Don't fail the request if database save fails
+    }
+
+    return NextResponse.json({ content, contentItemId });
   } catch (error) {
     console.error('Error generating content:', error);
     return NextResponse.json(

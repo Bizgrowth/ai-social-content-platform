@@ -1,82 +1,124 @@
-# AI Social Content Generator
+# AI Social Content Generator - SaaS Platform
 
-A powerful AI-powered social media content generator that creates platform-optimized, viral-worthy content for Facebook, Instagram, LinkedIn, and Twitter using Claude AI.
+A robust AI-powered social media content generator that creates platform-optimized content for Facebook, Instagram, LinkedIn, and Twitter. Built with Next.js 16, Supabase, and Claude AI.
 
-![AI Social Content Generator](https://img.shields.io/badge/AI-Powered-purple) ![Next.js](https://img.shields.io/badge/Next.js-16-black) ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue) ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-cyan)
+![AI Social Content Generator](https://img.shields.io/badge/AI-Powered-purple) ![Next.js](https://img.shields.io/badge/Next.js-16-black) ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue) ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-cyan) ![Supabase](https://img.shields.io/badge/Supabase-Database-green)
 
 ## Features
 
-- **Multi-Platform Support**: Generate content for Facebook, Instagram, LinkedIn, and Twitter simultaneously
-- **AI-Powered**: Uses Claude AI (Anthropic) to create engaging, platform-specific content
-- **Smart Prompting**: Guided form fields help users provide all necessary information
-- **Platform Optimization**: Content is automatically optimized for each platform's:
-  - Character limits
-  - Best practices
-  - Algorithm preferences
-  - Audience expectations
-- **Hashtag Generation**: Automatically generates relevant hashtags based on content
-- **Image Prompts**: Provides AI image generation prompts for visual content
-- **Copy to Clipboard**: One-click copying of generated content
-- **Responsive Design**: Works perfectly on desktop and mobile devices
+### 🚀 Content Generation
+- **Multi-Platform Support**: Generate optimized content for Facebook, Instagram, LinkedIn, and Twitter
+- **Smart Prompts**: Guided form fields for tone, target audience, content type, and keywords
+- **Image Suggestions**: AI-generated image prompts for visual content
+- **Hashtag Generation**: Platform-specific hashtag recommendations
+- **Character Limits**: Automatic optimization for each platform's limits
+
+### 🧠 AI Intelligence
+- **Brand Voice Learning**: AI analyzes your website and content to learn your brand voice (database ready)
+- **Performance Tracking**: Track engagement metrics and content performance (database ready)
+- **Pattern Recognition**: Discover what works best for your audience (database ready)
+- **Continuous Improvement**: AI learns from your ratings and performance data
+
+### 💾 Data Management
+- **Content History**: Save and organize all generated content
+- **User Authentication**: Secure login with email/password or Google OAuth
+- **Multi-Tenant Architecture**: Support for teams and organizations
+- **Row Level Security**: Database-level security with Supabase RLS
+- **Content Rating**: Rate your content to help AI learn
+
+### 📊 Advanced Features (Database Ready)
+- Brand Intelligence profiles
+- Social media account connections
+- Content calendar and scheduling
+- Analytics and performance snapshots
+- Team collaboration
+- AI insights and recommendations
 
 ## Tech Stack
 
-- **Framework**: Next.js 16 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **AI**: Anthropic Claude API
+- **Frontend**: Next.js 16 (App Router), React 19, TypeScript
+- **Styling**: Tailwind CSS 4
+- **Database**: Supabase (PostgreSQL)
+- **Authentication**: Supabase Auth
+- **AI**: Anthropic Claude API (claude-3-haiku-20240307)
 - **Icons**: Lucide React
-- **Deployment**: Vercel-ready
+- **Deployment**: Vercel
 
-## Installation
+## Getting Started
 
-1. **Clone the repository**:
-   ```bash
-   git clone <repository-url>
-   cd testapp
-   ```
+### Prerequisites
 
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+- Node.js 18+ and npm
+- Anthropic API key ([Get one here](https://console.anthropic.com/))
+- Supabase account ([Sign up here](https://supabase.com))
 
-3. **Configure environment variables**:
-   ```bash
-   cp .env.local.example .env.local
-   ```
+### Installation
 
-   Edit `.env.local` and add your Anthropic API key:
-   ```
-   ANTHROPIC_API_KEY=your_actual_api_key_here
-   ```
+1. **Clone the repository**
 
-   Get your API key from: [https://console.anthropic.com/](https://console.anthropic.com/)
+```bash
+git clone <your-repo-url>
+cd testapp
+```
 
-4. **Run the development server**:
-   ```bash
-   npm run dev
-   ```
+2. **Install dependencies**
 
-5. **Open your browser**:
-   Navigate to [http://localhost:3000](http://localhost:3000)
+```bash
+npm install
+```
+
+3. **Set up environment variables**
+
+Copy `.env.local.example` to `.env.local`:
+
+```bash
+cp .env.local.example .env.local
+```
+
+Edit `.env.local` and add your credentials:
+
+```env
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+4. **Set up Supabase**
+
+Follow the detailed guide in `SUPABASE_SETUP.md`:
+- Create a Supabase project
+- Run the database schema from `database-schema.sql`
+- Configure authentication providers
+- Get your API credentials
+
+5. **Run the development server**
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Usage
 
-1. **Select Platforms**: Choose one or more social media platforms (Facebook, Instagram, LinkedIn, Twitter)
+1. **Sign Up / Login**
+   - Create an account with email or Google OAuth
+   - Access the dashboard after authentication
 
-2. **Fill in the Smart Form**:
-   - **Topic/Message**: Describe what you want to communicate
-   - **Tone & Style**: Choose from professional, casual, enthusiastic, inspirational, humorous, or educational
-   - **Target Audience**: Specify who you're targeting
-   - **Content Type**: Select promotional, announcement, educational, engagement, testimonial, or behind-the-scenes
-   - **Call to Action**: Add what you want users to do
-   - **Keywords**: Include relevant keywords (comma-separated)
-   - **Options**: Toggle hashtags and emojis on/off
+2. **Generate Content**
+   - Select one or more platforms (Facebook, Instagram, LinkedIn, Twitter)
+   - Fill in the smart form with topic, tone, audience, and keywords
+   - Click "Generate Content"
 
-3. **Generate Content**: Click the "Generate Content" button
+3. **Review & Rate**
+   - View generated content for each platform
+   - Copy to clipboard with one click
+   - Rate content to help AI learn your preferences
 
-4. **Review & Copy**: Review the generated content for each platform and copy it to your clipboard
+4. **View History**
+   - Access `/history` to see all generated content
+   - Filter and search through your content library
+   - Re-rate content as needed
 
 ## Platform-Specific Features
 
@@ -113,51 +155,104 @@ A powerful AI-powered social media content generator that creates platform-optim
 testapp/
 ├── app/
 │   ├── api/
-│   │   └── generate/
-│   │       └── route.ts          # API endpoint for content generation
-│   ├── layout.tsx                # Root layout
-│   └── page.tsx                  # Main application page
+│   │   └── generate/          # Content generation API endpoint
+│   ├── auth/
+│   │   └── callback/          # OAuth callback handler
+│   ├── dashboard/             # Main content generation dashboard
+│   ├── history/               # Content history viewer
+│   ├── login/                 # Login page
+│   ├── signup/                # Sign up page
+│   ├── layout.tsx             # Root layout
+│   ├── page.tsx               # Landing page
+│   └── globals.css            # Global styles
 ├── components/
-│   └── PlatformPreview.tsx       # Platform-specific preview component
-├── public/                       # Static assets
-├── .env.local.example            # Environment variables template
-├── package.json                  # Dependencies
-├── tailwind.config.ts            # Tailwind configuration
-└── tsconfig.json                 # TypeScript configuration
+│   └── PlatformPreview.tsx    # Platform content preview component
+├── lib/
+│   └── supabase/
+│       ├── client.ts          # Client-side Supabase client
+│       └── server.ts          # Server-side Supabase client
+├── database-schema.sql        # Complete database schema
+├── middleware.ts              # Auth middleware
+├── SUPABASE_SETUP.md         # Supabase setup guide
+└── README.md                  # This file
 ```
 
-## API Endpoint
+## Database Schema
+
+The application uses a comprehensive database schema designed for a full-featured SaaS platform:
+
+### Core Tables
+- **profiles**: User accounts with subscription tiers and credits
+- **brand_profiles**: Brand intelligence (voice, colors, keywords, target audience)
+- **content_items**: Generated content with performance tracking
+- **ai_insights**: AI learning and pattern recognition
+- **performance_patterns**: What works best per platform
+
+### Advanced Features (Ready to Implement)
+- **social_accounts**: Connected social media accounts
+- **scheduled_posts**: Content calendar
+- **analytics_snapshots**: Daily performance metrics
+- **team_members**: Collaboration features
+
+See `database-schema.sql` for the complete schema with indexes and RLS policies.
+
+## Features Roadmap
+
+### ✅ Implemented
+- [x] Multi-platform content generation
+- [x] User authentication (email + Google OAuth)
+- [x] Content saving to database
+- [x] Content history viewer
+- [x] Dark mode UI
+- [x] Platform-specific optimization
+- [x] Image prompt generation
+- [x] Content rating system
+
+### 🚧 Next Steps
+- [ ] Brand Intelligence (analyze website/content)
+- [ ] Social media account connections
+- [ ] Content scheduling
+- [ ] Analytics dashboard
+- [ ] Performance prediction
+- [ ] Team collaboration
+- [ ] Subscription tiers
+- [ ] Credits system
+- [ ] AI learning from performance data
+- [ ] Best posting time recommendations
+
+## API Endpoints
 
 ### POST `/api/generate`
 
-Generates platform-specific content using Claude AI.
+Generates social media content for selected platforms.
 
-**Request Body**:
+**Request Body:**
 ```json
 {
   "platforms": ["facebook", "instagram", "linkedin", "twitter"],
   "topic": "Launching our new product",
-  "tone": "enthusiastic",
-  "targetAudience": "Young professionals",
+  "tone": "professional",
+  "targetAudience": "Small business owners",
   "callToAction": "Visit our website",
-  "keywords": "innovation, technology",
+  "keywords": "innovation, quality",
   "contentType": "promotional",
   "includeHashtags": true,
-  "includeEmojis": true
+  "includeEmojis": false
 }
 ```
 
-**Response**:
+**Response:**
 ```json
 {
   "content": [
     {
       "platform": "facebook",
-      "content": "The main post content...",
-      "hashtags": ["#Innovation", "#Technology"],
-      "imagePrompt": "A modern tech product on a clean white background..."
+      "content": "Generated post content...",
+      "hashtags": ["#innovation", "#quality"],
+      "imagePrompt": "A professional image showing..."
     }
-  ]
+  ],
+  "contentItemId": "uuid-of-saved-content"
 }
 ```
 
@@ -166,6 +261,8 @@ Generates platform-specific content using Claude AI.
 | Variable | Description | Required |
 |----------|-------------|----------|
 | `ANTHROPIC_API_KEY` | Your Anthropic API key for Claude AI | Yes |
+| `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL | Yes |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase anonymous/public key | Yes |
 
 ## Development
 
@@ -187,12 +284,15 @@ npm start
 
 ### Deploy to Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
-
 1. Push your code to GitHub
 2. Import your repository in Vercel
-3. Add your `ANTHROPIC_API_KEY` environment variable
-4. Deploy!
+3. Add environment variables in Vercel project settings:
+   - `ANTHROPIC_API_KEY`
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+4. Deploy
+
+The app will automatically deploy on every push to your main branch.
 
 ### Deploy to Other Platforms
 
@@ -261,6 +361,13 @@ If you see "ANTHROPIC_API_KEY is not configured":
 2. Verify the API key is correct
 3. Restart the development server after adding the key
 
+### Supabase Connection Issues
+
+1. Double-check your Supabase URL and anon key
+2. Ensure you ran the database schema from `database-schema.sql`
+3. Check that Row Level Security policies are enabled
+4. See `SUPABASE_SETUP.md` for detailed troubleshooting
+
 ### Content Generation Fails
 
 1. Check your Anthropic API key is valid
@@ -281,20 +388,28 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is open source and available under the MIT License.
 
+## Security
+
+- Environment variables are never committed to version control
+- Supabase Row Level Security (RLS) protects all data
+- Authentication is handled by Supabase Auth
+- API keys are stored securely
+
 ## Support
 
-For issues and questions:
-- Open an issue on GitHub
-- Check the Next.js documentation: [https://nextjs.org/docs](https://nextjs.org/docs)
-- Check the Anthropic API documentation: [https://docs.anthropic.com](https://docs.anthropic.com)
+For issues or questions:
+- Check `SUPABASE_SETUP.md` for setup issues
+- Review the database schema in `database-schema.sql`
+- Check Supabase logs for database errors
+- Review Next.js logs for API errors
 
-## Acknowledgments
+## License
+
+Private - All rights reserved
+
+## Credits
 
 - Built with [Next.js](https://nextjs.org/)
-- Powered by [Anthropic Claude](https://www.anthropic.com/)
+- Powered by [Claude AI](https://www.anthropic.com/claude)
+- Database by [Supabase](https://supabase.com/)
 - Icons by [Lucide](https://lucide.dev/)
-- Styled with [Tailwind CSS](https://tailwindcss.com/)
-
----
-
-**Made with AI** - This project demonstrates the power of AI-assisted development and AI-powered content generation.
